@@ -80,7 +80,7 @@ public class DiscoController {
         /**
          * Pasada la validación anterior, verificamos que existan discos para ese artista
          */
-        List<Disco> discos = discoRepository.findByIdArtista(idArtisString);
+        List<Disco> discos = discoRepository.findDiscosByIdArtista(idArtisString);
         return new ResponseEntity<List<Disco>>(discos, HttpStatus.OK);
     }
 
