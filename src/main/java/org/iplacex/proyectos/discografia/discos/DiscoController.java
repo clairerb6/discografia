@@ -34,6 +34,11 @@ public class DiscoController {
         produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<Disco> HandlePostDiscoRequest(@RequestBody Disco disco){
+
+        if(!artistaRepository.existsById(disco.idArtista)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
         Disco temp = discoRepository.insert(disco);
         return new ResponseEntity<>(temp,HttpStatus.CREATED);
     }
